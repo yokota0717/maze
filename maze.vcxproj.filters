@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="ソース ファイル">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="ヘッダー ファイル">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="リソース ファイル">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="ソース ファイル\System">
+      <UniqueIdentifier>{bbe709f2-f16b-40ed-b553-3e9e6d2eeb89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\System\Math">
+      <UniqueIdentifier>{2571474c-b29d-49bb-b575-1421d74002c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\System\Input">
+      <UniqueIdentifier>{5c795661-e834-43b9-9a48-dec0c93222fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Game">
+      <UniqueIdentifier>{ca41152c-a4e6-4479-8829-cd5b961e7d74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Game\GraphFactory">
+      <UniqueIdentifier>{9578b144-c7dd-4f31-9360-e89216870127}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Game\Object">
+      <UniqueIdentifier>{49d2a5f3-d4da-4109-b700-347033fb7598}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Game\Field">
+      <UniqueIdentifier>{51a53528-940c-44f8-ac32-92e9db543eaf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\System\Easing">
+      <UniqueIdentifier>{1976b2db-e789-460b-8a4d-110dec6f842a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Game\define">
+      <UniqueIdentifier>{e3115bed-997c-4a27-90d4-215a704a78a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Game\Player">
+      <UniqueIdentifier>{cf9979b4-7024-48af-97d4-529c02d8c829}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Game\Game">
+      <UniqueIdentifier>{636b94c4-631b-42f9-82fc-961d532422c0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\main.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Math\Math.cpp">
+      <Filter>ソース ファイル\System\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Input\Input.cpp">
+      <Filter>ソース ファイル\System\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GraphFactory\GraphFactory.cpp">
+      <Filter>ソース ファイル\Game\GraphFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Actor\Field.cpp">
+      <Filter>ソース ファイル\Game\Field</Filter>
+    </ClCompile>
+    <ClCompile Include="src\define.cpp">
+      <Filter>ソース ファイル\Game\define</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Actor\Player.cpp">
+      <Filter>ソース ファイル\Game\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Actor\Game.cpp">
+      <Filter>ソース ファイル\Game\Game</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Math\Math.h">
+      <Filter>ソース ファイル\System\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Input\Input.h">
+      <Filter>ソース ファイル\System\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GraphFactory\GraphFactory.h">
+      <Filter>ソース ファイル\Game\GraphFactory</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Object\Object.h">
+      <Filter>ソース ファイル\Game\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Actor\Field.h">
+      <Filter>ソース ファイル\Game\Field</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Easing\Easing.h">
+      <Filter>ソース ファイル\System\Easing</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Console\Console.h">
+      <Filter>ソース ファイル\System</Filter>
+    </ClInclude>
+    <ClInclude Include="src\define.h">
+      <Filter>ソース ファイル\Game\define</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Actor\Player.h">
+      <Filter>ソース ファイル\Game\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Actor\Game.h">
+      <Filter>ソース ファイル\Game\Game</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
