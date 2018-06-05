@@ -80,7 +80,7 @@ namespace Math {
 		Vec& operator -= (const Vec& v);
 		Vec& operator *= (const float n);
 		Vec& operator /= (const float n);
-
+		bool operator == (const Vec& v) const;
 	};
 
 

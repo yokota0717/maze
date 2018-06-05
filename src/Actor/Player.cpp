@@ -9,13 +9,15 @@ Player::Player(const string& name, Object::Status status)
 
 void Player::init() {
 	field = dynamic_pointer_cast<Field>(getParentPtr().lock());
-	pos = field->setPlayerPos();
+	Math::Vec startBlock = field->setPlayerPos();
+	pos = Math::Vec(200.0f + 100 * startBlock.x + 45, 100.0f + 100 * startBlock.y + 45);
 	nowBlock = Math::Vec((pos.x - 245) / 100, (pos.y - 145) / 100);	//pos‚©‚çŒvŽZ
+	nowMap = field->getActiveMapID();
 	move = false;
 }
 void Player::update() {
 	if (!field) { return; }
-
+	if (field->isCleared()) { return; }
 	Math::Vec pre;
 	if (!move) {	//ˆÚ“®’†‚Å‚È‚¯‚ê‚Î“ü—ÍŽó•t
 		int keyFlag = 0;
@@ -73,12 +75,17 @@ void Player::update() {
 	//ˆÚ“®
 	pos.x = x;
 	pos.y = y;
+	//ˆÚ“®I—¹
 	if (pos.x == endx && pos.y == endy) {
 		nowBlock += est;
 		est.x = est.y = 0.0f;
 		move = false;
 		easex.init();
 		easey.init();
+		//ƒS[ƒ‹”»’è
+		if (nowBlock == field->getGoalPos()) {
+			postMsg(this->getParentPtr(), "Goal");
+		}
 	}
 }
 void Player::render() {
@@ -95,13 +102,13 @@ void Player::CheckMove(int keyFlag) {
 bool Player::CheckWall(KeyCode keyCode){
 	switch (keyCode) {
 	case LEFT:
-		return !field->isLeftWall(nowBlock) && !field->isRightWall(nowBlock.x - 1, nowBlock.y);
+		return !field->isLeftWall(nowMap, nowBlock) && !field->isRightWall(nowMap, nowBlock.x - 1, nowBlock.y);
 	case RIGHT:
-		return !field->isRightWall(nowBlock) && !field->isLeftWall(nowBlock.x + 1, nowBlock.y);
+		return !field->isRightWall(nowMap, nowBlock) && !field->isLeftWall(nowMap, nowBlock.x + 1, nowBlock.y);
 	case UP:
-		return !field->isUpWall(nowBlock) && !field->isBottomWall(nowBlock.x, nowBlock.y - 1);
+		return !field->isUpWall(nowMap, nowBlock) && !field->isBottomWall(nowMap, nowBlock.x, nowBlock.y - 1);
 	case DOWN:
-		return !field->isBottomWall(nowBlock) && !field->isUpWall(nowBlock.x, nowBlock.y + 1);
+		return !field->isBottomWall(nowMap, nowBlock) && !field->isUpWall(nowMap, nowBlock.x, nowBlock.y + 1);
 	default:
 		return false;
 	}
@@ -119,4 +126,10 @@ bool Player::OutofMap(KeyCode keyCode) {
 	default:
 		return true;
 	}
+}
+
+int Player::recieveMsg(std::weak_ptr<Object> sender, int mapnum){
+	if (mapnum < 0 || mapnum >= 4) { return -1; }
+	this->nowMap = mapnum;
+	return 0;
 }

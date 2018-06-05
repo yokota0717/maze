@@ -133,6 +133,9 @@ Math::Vec& Math::Vec::operator += (const Math::Vec& v) { x += v.x; y += v.y; z +
 Math::Vec& Math::Vec::operator -= (const Math::Vec& v) { x -= v.x; y -= v.y; z -= v.z; return *this; }
 Math::Vec& Math::Vec::operator *= (const float n) { x *= n; y *= n; z *= n; return *this; }
 Math::Vec& Math::Vec::operator /= (const float n) { x /= n; y /= n; z /= n; return *this; }
+bool Math::Vec::operator==(const Vec & v) const {
+	return this->x == v.x && this->y == v.y && this->z == v.z;
+}
 //---------------------------------------------------------------------------------------------------------------------
 
 //Box2D----------------------------------------------------------------------------------------------------------------
