@@ -17,6 +17,12 @@ Math::Vec::Vec(float x, float y, float z)
 	y(y),
 	z(z)
 {}
+Math::Vec::Vec(int x, int y)
+	:
+	x((float)x),
+	y((float)y),
+	z(0.f)
+{}
 Math::Vec::~Vec() {};
 void Math::Vec::Zero(){
 	x = 0;
@@ -54,7 +60,7 @@ void Math::Vec::RotateVecRadian(Math::Vec center, float rad) {
 }
 //2つのベクトルの外積を返す(3次元)
 Math::Vec Math::Vec::GetCrossVec3(Math::Vec v1, Math::Vec v2) {
-	Math::Vec Result;
+	Math::Vec Result(0.f, 0.f, 0.f);
 	Result.x = v1.y*v2.z - v1.z*v2.y;
 	Result.y = v1.z*v2.x - v1.x*v2.z;
 	Result.z = v1.x*v2.y - v1.y*v2.x;
@@ -75,7 +81,7 @@ Math::Vec Math::Vec::GetUnitVec(Math::Vec v) {
 }
 //ベクトルをn倍する
 Math::Vec Math::Vec::VecScale(Math::Vec v, float n) {
-	Math::Vec Result;
+	Math::Vec Result(0.f, 0.f, 0.f);
 	Result.x *= n;
 	Result.y *= n;
 	Result.z *= n;
