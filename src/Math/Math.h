@@ -24,7 +24,6 @@ namespace Math {
 		float x, y, z;		//座標
 
 		Vec(float x = 0.0f, float y = 0.0f, float z = 0.0f);
-		Vec(int x = 0, int y = 0);
 		~Vec();
 
 		//ベクトルのゼロクリア

@@ -121,9 +121,11 @@
   <ItemGroup>
     <ClCompile Include="src\Actor\Field.cpp" />
     <ClCompile Include="src\Actor\Game.cpp" />
+    <ClCompile Include="src\Actor\Goal.cpp" />
+    <ClCompile Include="src\Actor\Item.cpp" />
+    <ClCompile Include="src\Actor\Move\Move.cpp" />
     <ClCompile Include="src\Actor\Player.cpp" />
     <ClCompile Include="src\define.cpp" />
-    <ClCompile Include="src\GraphFactory\GraphFactory.cpp" />
     <ClCompile Include="src\Input\Input.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Math\Math.cpp" />
@@ -131,11 +133,13 @@
   <ItemGroup>
     <ClInclude Include="src\Actor\Field.h" />
     <ClInclude Include="src\Actor\Game.h" />
+    <ClInclude Include="src\Actor\Goal.h" />
+    <ClInclude Include="src\Actor\Item.h" />
+    <ClInclude Include="src\Actor\Move\Move.h" />
     <ClInclude Include="src\Actor\Player.h" />
     <ClInclude Include="src\Console\Console.h" />
     <ClInclude Include="src\define.h" />
     <ClInclude Include="src\Easing\Easing.h" />
-    <ClInclude Include="src\GraphFactory\GraphFactory.h" />
     <ClInclude Include="src\Input\Input.h" />
     <ClInclude Include="src\Math\Math.h" />
     <ClInclude Include="src\Object\Object.h" />

@@ -694,7 +694,7 @@ public:
 	int image;			 //画像ハンドル
 	Math::Box2D draw;	 //画像表示範囲
 	Math::Box2D src;	 //読み込む画像の範囲
-	Math::Vec pos;		 //座標
+	//Math::Vec pos;		 //座標
 
 private:
 	//親子関係構築用：親のweak_ptrを設定する
@@ -719,9 +719,9 @@ private:
 
 	//-----------------------------------------------------------------------
 	//座標、描画範囲のセッター
-	void setPos(Math::Vec p) {
-		pos = p;
-	}
+	//void setPos(Math::Vec p) {
+	//	pos = p;
+	//}
 	void setDraw(Math::Box2D d){
 		draw = d;
 	}

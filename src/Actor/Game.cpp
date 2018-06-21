@@ -23,7 +23,7 @@ int Root::frame() {
 Game::Game() {
 	root = std::make_shared<Root>();
 	root->init(root);
-	grafac = std::make_unique<GraphFactory>();
+//	grafac = std::make_unique<GraphFactory>();
 }
 
 Game::~Game(){}

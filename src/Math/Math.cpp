@@ -17,12 +17,6 @@ Math::Vec::Vec(float x, float y, float z)
 	y(y),
 	z(z)
 {}
-Math::Vec::Vec(int x, int y)
-	:
-	x((float)x),
-	y((float)y),
-	z(0.f)
-{}
 Math::Vec::~Vec() {};
 void Math::Vec::Zero(){
 	x = 0;

@@ -1,6 +1,6 @@
 #pragma once
 #include "../Input/Input.h"
-#include "../GraphFactory/GraphFactory.h"
+//#include "../GraphFactory/GraphFactory.h"
 #include "../Object/Object.h"
 #include "../define.h"
 
@@ -32,7 +32,7 @@ public:
 	Keyboard kb;
 	Mouse mouse;
 	std::shared_ptr<Root> root;
-	std::unique_ptr<GraphFactory> grafac;
+	//std::unique_ptr<GraphFactory> grafac;
 	void doAll();
 	bool DebugMode();
 };

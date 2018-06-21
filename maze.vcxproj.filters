@@ -40,11 +40,11 @@
     <Filter Include="ソース ファイル\Game\define">
       <UniqueIdentifier>{e3115bed-997c-4a27-90d4-215a704a78a4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\Game\Player">
-      <UniqueIdentifier>{cf9979b4-7024-48af-97d4-529c02d8c829}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソース ファイル\Game\Game">
       <UniqueIdentifier>{636b94c4-631b-42f9-82fc-961d532422c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Game\Chara">
+      <UniqueIdentifier>{cf9979b4-7024-48af-97d4-529c02d8c829}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -57,9 +57,6 @@
     <ClCompile Include="src\Input\Input.cpp">
       <Filter>ソース ファイル\System\Input</Filter>
     </ClCompile>
-    <ClCompile Include="src\GraphFactory\GraphFactory.cpp">
-      <Filter>ソース ファイル\Game\GraphFactory</Filter>
-    </ClCompile>
     <ClCompile Include="src\Actor\Field.cpp">
       <Filter>ソース ファイル\Game\Field</Filter>
     </ClCompile>
@@ -67,10 +64,19 @@
       <Filter>ソース ファイル\Game\define</Filter>
     </ClCompile>
     <ClCompile Include="src\Actor\Player.cpp">
-      <Filter>ソース ファイル\Game\Player</Filter>
+      <Filter>ソース ファイル\Game\Chara</Filter>
     </ClCompile>
     <ClCompile Include="src\Actor\Game.cpp">
       <Filter>ソース ファイル\Game\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Actor\Move\Move.cpp">
+      <Filter>ソース ファイル\Game\Chara</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Actor\Item.cpp">
+      <Filter>ソース ファイル\Game\Chara</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Actor\Goal.cpp">
+      <Filter>ソース ファイル\Game\Field</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -79,9 +85,6 @@
     </ClInclude>
     <ClInclude Include="src\Input\Input.h">
       <Filter>ソース ファイル\System\Input</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GraphFactory\GraphFactory.h">
-      <Filter>ソース ファイル\Game\GraphFactory</Filter>
     </ClInclude>
     <ClInclude Include="src\Object\Object.h">
       <Filter>ソース ファイル\Game\Object</Filter>
@@ -99,10 +102,19 @@
       <Filter>ソース ファイル\Game\define</Filter>
     </ClInclude>
     <ClInclude Include="src\Actor\Player.h">
-      <Filter>ソース ファイル\Game\Player</Filter>
+      <Filter>ソース ファイル\Game\Chara</Filter>
     </ClInclude>
     <ClInclude Include="src\Actor\Game.h">
       <Filter>ソース ファイル\Game\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Actor\Move\Move.h">
+      <Filter>ソース ファイル\Game\Chara</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Actor\Item.h">
+      <Filter>ソース ファイル\Game\Chara</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Actor\Goal.h">
+      <Filter>ソース ファイル\Game\Field</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
