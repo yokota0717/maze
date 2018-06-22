@@ -38,29 +38,28 @@ void Player::render()
 	DrawCircleAA(move->pos.x, move->pos.y, 20, 200, debugRed, true);
 	//ŠŽƒAƒCƒeƒ€‚É‚æ‚Á‚Ä’Ç‰Á
 	for (auto item : this->items) {
-		switch (item.getType()) {
+		Math::Vec itemPos(this->move->pos.x - 50, this->move->pos.y - 50);
+		switch (item->getType()) {
 		case Item::ItemType::OvalLength:
-			item.DrawOvalLength(this->move->pos);
+			item->DrawOvalLength(itemPos, GetColor(255, 80, 80));
 			break;
 		case Item::ItemType::OvalSide:
-			item.DrawOvalSide(this->move->pos);
+			item->DrawOvalSide(itemPos, GetColor(255, 80, 80));
 			break;
 		default:
 			break;
 		}
 	}
-	//DrawOvalAA(move->pos.x, move->pos.y, 40, 25, 200, debugRed, false, 3);
-	//DrawOvalAA(move->pos.x, move->pos.y, 25, 40, 200, debugRed, false, 3);
-
 }
 
-std::vector<Item> Player::nowItem() const
+std::vector<std::shared_ptr<Item>> Player::nowItem() const
 {
 	return this->items;
 }
 
-void Player::getItem(Item & item)
+void Player::getItem(std::shared_ptr<Item> item)
 {
+	item->setBlockPos(this->move->blockPos);
 	this->items.push_back(item);
 }
 

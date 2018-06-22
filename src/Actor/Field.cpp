@@ -106,7 +106,7 @@ void Field::init()
 	auto item2 = insertAsChild(new Item("Item", Object::Status::run, Item::ItemType::OvalSide));
 	std::dynamic_pointer_cast<Item>(item2.lock())->setBlockPos(Math::Vec(5, 6));
 	auto goal = insertAsChild(new Goal("Goal", Object::Status::run));
-	std::dynamic_pointer_cast<Goal>(goal.lock())->setGoalInfo(Math::Vec(14, 7), std::vector<Item>{Item("Item", Object::Status::run, Item::ItemType::OvalLength)});
+	std::dynamic_pointer_cast<Goal>(goal.lock())->setGoalInfo(Math::Vec(14, 7), std::vector<Item>{Item("Item", Object::Status::run, Item::ItemType::OvalLength), Item("Item", Object::Status::run, Item::ItemType::OvalSide)});
 	this->map.clear();
 	this->map.resize(4);
 	LoadMap(std::vector<std::string>{(std::string)"map1.csv", (std::string)"map2.csv", (std::string)"map3.csv", (std::string)"map4.csv"});
@@ -125,6 +125,11 @@ void Field::update()
 void Field::render()
 {
 	map[this->activeMapID_].render();
+
+	if (this->clear) {
+		SetFontSize(100);
+		DrawFormatString(600, 400, debugRed, "CLEARED!");
+	}
 }
 
 bool Field::LoadMap(std::vector<std::string> path)
@@ -170,15 +175,34 @@ bool Field::isWall(KeyCode key, Math::Vec blockPos)
 	}
 }
 
-bool Field::checkGetItem(Math::Vec & pos)
+bool Field::checkGetItem(Math::Vec & blockPos)
 {
 	auto items = this->getObjectsFromChildren(std::vector<std::string>{("Item")});
 	if (!items.empty()) {
 		for (auto item : items) {
-			if (pos == std::dynamic_pointer_cast<Item>(item.lock())->getPos()) {
+			auto p = std::dynamic_pointer_cast<Item>(item.lock())->getBlockPos();
+			if (blockPos == std::dynamic_pointer_cast<Item>(item.lock())->getBlockPos()) {
+				auto player = this->getObjectFromChildren("Player");
+				std::dynamic_pointer_cast<Player>(player.lock())->getItem(std::shared_ptr<Item>(new Item("Item", Object::Status::run, std::dynamic_pointer_cast<Item>(item.lock())->getType())));
+				item.lock()->kill();
 				return true;
 			}
 		}
 	}
 	return false;
+}
+
+Math::Vec Field::getGoalPos()
+{
+	return std::dynamic_pointer_cast<Goal>(this->getObjectFromChildren("Goal").lock())->getBlockPos();
+}
+
+void Field::checkClear()
+{
+	
+}
+
+void Field::cleared()
+{
+	this->clear = true;
 }

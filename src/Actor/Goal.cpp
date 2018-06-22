@@ -11,7 +11,9 @@ Goal::~Goal()
 {}
 
 void Goal::init()
-{}
+{
+	field = std::dynamic_pointer_cast<Field>(this->getParentPtr().lock());
+}
 
 void Goal::setGoalInfo(Math::Vec blockPos, std::vector<Item>& item)
 {
@@ -26,20 +28,20 @@ void Goal::update()
 
 void Goal::render()
 {
+	int color = (field->isCleared()) ? GetColor(200, 200, 200) : GetColor(80, 80, 80);
 	for (auto i : this->item) {
 		switch (i.getType()) {
 		case Item::ItemType::OvalLength:
-			i.DrawOvalLength(this->pos);
+			i.DrawOvalLength(this->pos, color);
 			break;
 		case Item::ItemType::OvalSide:
-			i.DrawOvalSide(this->pos);
+			i.DrawOvalSide(this->pos, color);
 			break;
 		}
 	}
 }
 
-bool Goal::checkClear()
+Math::Vec Goal::getBlockPos() const
 {
-	return false;
+	return this->blockPos;
 }
-

@@ -18,11 +18,12 @@ public:
 	void render() override;
 	void setBlockPos(Math::Vec pos);
 	Math::Vec getPos() const;
+	Math::Vec getBlockPos() const;
 
 	ItemType getType();
 
-	void DrawOvalLength(Math::Vec pos);
-	void DrawOvalSide(Math::Vec pos);
+	void DrawOvalLength(Math::Vec pos, int color);
+	void DrawOvalSide(Math::Vec pos, int color);
 
 private:
 	ItemType type;

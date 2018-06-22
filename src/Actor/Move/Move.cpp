@@ -101,13 +101,12 @@ void InputMove::move()
 		easex.init();
 		easey.init();
 		//アイテム判定
-		if (field->checkGetItem(this->pos)) {
-
+		field->checkGetItem(this->blockPos);
+		//ゴール判定
+		if (blockPos == field->getGoalPos()) {
+			field->cleared();
+			//postMsg(this->getParentPtr(), "Goal");
 		}
-		////ゴール判定
-		//if (blockPos == field->getGoalPos()) {
-		//	postMsg(this->getParentPtr(), "Goal");
-		//}
 	}
 
 }

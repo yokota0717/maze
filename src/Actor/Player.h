@@ -25,11 +25,11 @@ public:
 	void update() override;
 	void render() override;
 
-	std::vector<Item> nowItem() const;
-	void getItem(Item& item);
+	std::vector<std::shared_ptr<Item>> nowItem() const;
+	void getItem(std::shared_ptr<Item> item);
 
 private:
-	std::vector<Item> items;
+	std::vector<std::shared_ptr<Item>> items;
 };
 
 class Enemy : public Chara {

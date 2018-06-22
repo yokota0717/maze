@@ -15,12 +15,12 @@ public:
 	void update() override;
 	void render() override;
 
-	bool checkClear();
-
+	Math::Vec getBlockPos() const;
 
 private:
 	std::vector<Item> item;
 	Math::Vec blockPos;
 	Math::Vec pos;
+	std::shared_ptr<Field> field;
 };
 

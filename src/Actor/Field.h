@@ -49,6 +49,11 @@ public:
 
 	//blockPosからkeyの方向が壁かどうか判定
 	bool isWall(KeyCode key, Math::Vec blockPos);
-	//プレイヤがアイテムとったか
+	//プレイヤがアイテムとった
 	bool checkGetItem(Math::Vec& pos);
+
+	Math::Vec getGoalPos();
+	void checkClear();
+
+	void cleared();
 };

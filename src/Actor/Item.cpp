@@ -25,10 +25,10 @@ void Item::render()
 {
 	switch (this->type) {
 	case OvalLength:
-		DrawOvalLength(this->pos);	
+		DrawOvalLength(this->pos, GetColor(200, 80, 80));
 		break;
 	case OvalSide:
-		DrawOvalSide(this->pos);
+		DrawOvalSide(this->pos, GetColor(200, 80, 80));
 		break;
 	default:
 		break;
@@ -45,17 +45,22 @@ Math::Vec Item::getPos() const
 	return this->pos;
 }
 
+Math::Vec Item::getBlockPos() const
+{
+	return this->blockPos;
+}
+
 Item::ItemType Item::getType()
 {
 	return this->type;
 }
 
-void Item::DrawOvalLength(Math::Vec pos)
+void Item::DrawOvalLength(Math::Vec pos, int color)
 {
-	DrawOvalAA(pos.x + 50, pos.y + 50, 40, 25, 200, debugRed, false, 3);
+	DrawOvalAA(pos.x + 50, pos.y + 50, 40, 25, 200, color, false, 3);
 }
 
-void Item::DrawOvalSide(Math::Vec pos)
+void Item::DrawOvalSide(Math::Vec pos, int color)
 {
-	DrawOvalAA(pos.x + 50, pos.y + 50, 25, 40, 200, debugRed, false, 3);
+	DrawOvalAA(pos.x + 50, pos.y + 50, 25, 40, 200, color, false, 3);
 }
