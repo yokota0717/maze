@@ -46,6 +46,9 @@
     <Filter Include="ソース ファイル\Game\Chara">
       <UniqueIdentifier>{cf9979b4-7024-48af-97d4-529c02d8c829}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Game\Title">
+      <UniqueIdentifier>{0173044d-68c8-4736-905a-b37a6e13a021}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -77,6 +80,9 @@
     </ClCompile>
     <ClCompile Include="src\Actor\Goal.cpp">
       <Filter>ソース ファイル\Game\Field</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Actor\Title.cpp">
+      <Filter>ソース ファイル\Game\Title</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -115,6 +121,9 @@
     </ClInclude>
     <ClInclude Include="src\Actor\Goal.h">
       <Filter>ソース ファイル\Game\Field</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Actor\Title.h">
+      <Filter>ソース ファイル\Game\Title</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

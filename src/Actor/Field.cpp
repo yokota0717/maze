@@ -120,6 +120,10 @@ void Field::update()
 	if (game->kb.Down(A)) { activeMapID_ = 1; }
 	if (game->kb.Down(D)) { activeMapID_ = 2; }
 	if (game->kb.Down(S)) { activeMapID_ = 3; }
+
+	if (game->kb.Down(ENTER)) {
+		BackToTitle();
+	}
 }
 
 void Field::render()
@@ -205,4 +209,11 @@ void Field::checkClear()
 void Field::cleared()
 {
 	this->clear = true;
+}
+
+bool Field::BackToTitle()
+{
+	postMsg(getParentPtr(), "Title");
+	this->kill();
+	return true;
 }

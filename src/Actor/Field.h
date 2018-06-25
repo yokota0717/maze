@@ -56,4 +56,7 @@ public:
 	void checkClear();
 
 	void cleared();
+
+private:
+	bool BackToTitle();
 };

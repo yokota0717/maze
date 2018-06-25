@@ -125,6 +125,7 @@
     <ClCompile Include="src\Actor\Item.cpp" />
     <ClCompile Include="src\Actor\Move\Move.cpp" />
     <ClCompile Include="src\Actor\Player.cpp" />
+    <ClCompile Include="src\Actor\Title.cpp" />
     <ClCompile Include="src\define.cpp" />
     <ClCompile Include="src\Input\Input.cpp" />
     <ClCompile Include="src\main.cpp" />
@@ -137,6 +138,7 @@
     <ClInclude Include="src\Actor\Item.h" />
     <ClInclude Include="src\Actor\Move\Move.h" />
     <ClInclude Include="src\Actor\Player.h" />
+    <ClInclude Include="src\Actor\Title.h" />
     <ClInclude Include="src\Console\Console.h" />
     <ClInclude Include="src\define.h" />
     <ClInclude Include="src\Easing\Easing.h" />

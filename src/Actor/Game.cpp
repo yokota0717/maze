@@ -1,4 +1,7 @@
 #include "Game.h"
+#include "Field.h"
+#include "Title.h"
+
 
 Root::Root()
 	:
@@ -9,7 +12,7 @@ Root::~Root() {}
 
 void Root::init(std::shared_ptr<Object> thisptr) {
 	setWeakPtr(thisptr);
-	insertAsChild(new Field("Field", Object::Status::run));
+	insertAsChild(new Title("Title", Object::Status::run));
 }
 void Root::update() {
 	++frame_;
@@ -19,6 +22,16 @@ void Root::render() {
 }
 int Root::frame() {
 	return frame_;
+}
+int Root::receiveMsg(std::weak_ptr<Object> sender, const std::string & msg)
+{
+	if (msg == "Start") {
+		insertAsChild(new Field("Field", Object::Status::run));
+	}
+	else if (msg == "Title") {
+		insertAsChild(new Title("Title", Object::Status::run));
+	}
+	return 0;
 }
 Game::Game() {
 	root = std::make_shared<Root>();

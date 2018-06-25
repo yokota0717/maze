@@ -4,7 +4,6 @@
 #include "../Object/Object.h"
 #include "../define.h"
 
-#include "Field.h"
 
 //ルートクラス
 class Root :public Object {
@@ -15,6 +14,7 @@ public:
 	void update() override;
 	void render() override;
 	int frame();
+	int receiveMsg(std::weak_ptr<Object> sender, const std::string& msg);
 
 private:
 	int frame_;
