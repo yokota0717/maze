@@ -2,12 +2,14 @@
 #include "./Input.h"
 #include <iostream>
 
-Keyboard::Keyboard() {
+Keyboard::Keyboard()
+{
 	Key[256] = {};
 	preKey[256] = {};
 }
 // キーの入力状態更新
-void Keyboard::update() {
+void Keyboard::update() 
+{
 	char tmpKey[256];				// 現在のキーの入力状態を格納する
 	GetHitKeyStateAll(tmpKey);		// 全てのキーの入力状態を得る
 	for (int i = 0; i<256; i++) {
@@ -22,23 +24,29 @@ void Keyboard::update() {
 }
 
 // KeyCodeのキーの入力状態を取得する
-int Keyboard::getKey(KeyCode KeyCode) {
+int Keyboard::getKey(KeyCode KeyCode) 
+{
 	return Key[KeyCode];			// KeyCodeの入力状態を返す
 }
-int Keyboard::getPreKey(KeyCode keycode) {
+int Keyboard::getPreKey(KeyCode keycode) 
+{
 	return preKey[keycode];
 }
 
-bool Keyboard::Down(KeyCode keycode) {
+bool Keyboard::Down(KeyCode keycode) 
+{
 	return (getKey(keycode) == 1);
 }
-bool Keyboard::On(KeyCode keycode) {
+bool Keyboard::On(KeyCode keycode) 
+{
 	return (getKey(keycode) > 1);
 }
-bool Keyboard::Up(KeyCode keycode) {
+bool Keyboard::Up(KeyCode keycode) 
+{
 	return ((getPreKey(keycode) >= 1) && getKey(keycode) == 0);
 }
-bool Keyboard::Off(KeyCode keycode) {
+bool Keyboard::Off(KeyCode keycode) 
+{
 	return ((getPreKey(keycode) == 0) && getKey(keycode) == 0);
 }
 
@@ -47,13 +55,99 @@ GPad::GPad(int id):
 	padID(id)
 {}
 
-void GPad::update() {
+void GPad::update()
+{
+	//前フレームの状態を保存
+	pre = input;
 	// 入力状態を取得
 	GetJoypadDirectInputState(DX_INPUT_PAD1, &input);
 }
 
-unsigned int GPad::getPadNum() {
+unsigned int GPad::getPadNum() 
+{
 	return GetJoypadNum();
+}
+
+bool GPad::On(PadCode in)
+{
+	return ((input.Buttons[(int)in] == 128) && (pre.Buttons[(int)in] == 128));
+}
+bool GPad::Down(PadCode in)
+{
+	return ((input.Buttons[(int)in] == 128) && (pre.Buttons[(int)in] == 0));
+}
+bool GPad::Up(PadCode in)
+{
+	return ((input.Buttons[(int)in] == 0) && (pre.Buttons[(int)in] == 128));
+}
+bool GPad::Off(PadCode in)
+{
+	return ((input.Buttons[(int)in] == 0) && (pre.Buttons[(int)in] == 0));
+}
+
+//0xffffffff:入力なし 0:上 4500:右上 9000:右 13500:右下 18000:下 22500:左下 27000:左 31500:左上
+bool GPad::On(PadAng in)
+{
+	switch (in) {
+	case PadAng::LEFT:
+		return ((input.POV[0] == 27000) && (pre.POV[0] == 27000));
+	case PadAng::RIGHT:
+		return ((input.POV[0] == 9000) && (pre.POV[0] == 9000));
+	case PadAng::UP:
+		return ((input.POV[0] == 0) && (pre.POV[0] == 0));
+	case PadAng::DOWN:
+		return ((input.POV[0] == 18000) && (pre.POV[0] == 18000));
+	default:
+		return false;
+	}
+}
+
+bool GPad::Down(PadAng in)
+{
+	switch (in) {
+	case PadAng::LEFT:
+		return ((input.POV[0] == 27000) && (pre.POV[0] != 27000));
+	case PadAng::RIGHT:
+		return ((input.POV[0] == 9000) && (pre.POV[0] != 9000));
+	case PadAng::UP:
+		return ((input.POV[0] == 0) && (pre.POV[0] != 0));
+	case PadAng::DOWN:
+		return ((input.POV[0] == 18000) && (pre.POV[0] != 18000));
+	default:
+		return false;
+	}
+}
+
+bool GPad::Up(PadAng in)
+{
+	switch (in) {
+	case PadAng::LEFT:
+		return ((input.POV[0] == 0xffffffff) && (pre.POV[0] == 27000));
+	case PadAng::RIGHT:
+		return ((input.POV[0] == 0xffffffff) && (pre.POV[0] == 9000));
+	case PadAng::UP:
+		return ((input.POV[0] == 0xffffffff) && (pre.POV[0] == 0));
+	case PadAng::DOWN:
+		return ((input.POV[0] == 0xffffffff) && (pre.POV[0] == 18000));
+	default:
+		return false;
+	}
+}
+
+bool GPad::Off(PadAng in)
+{
+	switch (in) {
+	case PadAng::LEFT:
+		return ((input.POV[0] == 0xffffffff) && (pre.POV[0] == 0xffffffff));
+	case PadAng::RIGHT:
+		return ((input.POV[0] == 0xffffffff) && (pre.POV[0] == 0xffffffff));
+	case PadAng::UP:
+		return ((input.POV[0] == 0xffffffff) && (pre.POV[0] == 0xffffffff));
+	case PadAng::DOWN:
+		return ((input.POV[0] == 0xffffffff) && (pre.POV[0] == 0xffffffff));
+	default:
+		return false;
+	}
 }
 
 void Mouse::update() {

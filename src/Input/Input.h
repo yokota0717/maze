@@ -13,7 +13,7 @@ enum KeyCode {
 	ENTER = KEY_INPUT_RETURN,
 	ESCAPE = KEY_INPUT_ESCAPE,
 	SPACE = KEY_INPUT_SPACE,
-	TAB = KEY_INPUT_TAB,		
+	TAB = KEY_INPUT_TAB,
 
 	A = KEY_INPUT_A,
 	B = KEY_INPUT_B,
@@ -42,12 +42,13 @@ enum KeyCode {
 	Y = KEY_INPUT_Y,
 	Z = KEY_INPUT_Z,
 
+	LSHIFT = KEY_INPUT_LSHIFT,
+	RSHIFT = KEY_INPUT_RSHIFT,
+	LCTRL = KEY_INPUT_LCONTROL,
+	RCTRL = KEY_INPUT_RCONTROL,
 
 
-	//KEY_INPUT_LSHIFT			
-	//KEY_INPUT_RSHIFT			
-	//KEY_INPUT_LCONTROL		
-	//KEY_INPUT_RCONTROL		
+
 	//KEY_INPUT_PGUP			
 	//KEY_INPUT_PGDN			
 	//KEY_INPUT_END				
@@ -99,30 +100,29 @@ enum KeyCode {
 	//KEY_INPUT_DIVIDE			
 	//KEY_INPUT_NUMPADENTER		
 	//
-	//KEY_INPUT_F1				
-	//KEY_INPUT_F2				
-	//KEY_INPUT_F3				
-	//KEY_INPUT_F4				
-	//KEY_INPUT_F5				
-	//KEY_INPUT_F6				
-	//KEY_INPUT_F7				
-	//KEY_INPUT_F8				
-	//KEY_INPUT_F9				
-	//KEY_INPUT_F10				
-	//KEY_INPUT_F11				
-	//KEY_INPUT_F12				
-	//
-	
-	//KEY_INPUT_0 				
-	//KEY_INPUT_1				
-	//KEY_INPUT_2				
-	//KEY_INPUT_3				
-	//KEY_INPUT_4				
-	//KEY_INPUT_5				
-	//KEY_INPUT_6				
-	//KEY_INPUT_7				
-	//KEY_INPUT_8				
-	//KEY_INPUT_9				
+	F1 = KEY_INPUT_F1,
+	F2 = KEY_INPUT_F2,
+	F3 = KEY_INPUT_F3,				
+	F4 = KEY_INPUT_F4,
+	F5 = KEY_INPUT_F5,				
+	F6 = KEY_INPUT_F6,		
+	F7 = KEY_INPUT_F7,				
+	F8 = KEY_INPUT_F8,				
+	F9 = KEY_INPUT_F9,				
+	F10 = KEY_INPUT_F10,				
+	F11 = KEY_INPUT_F11,			
+	F12 = KEY_INPUT_F12,			
+
+	KEY_0 = KEY_INPUT_0,
+	KEY_1 = KEY_INPUT_1,
+	KEY_2 = KEY_INPUT_2,
+	KEY_3 = KEY_INPUT_3,
+	KEY_4 = KEY_INPUT_4,
+	KEY_5 = KEY_INPUT_5,
+	KEY_6 = KEY_INPUT_6,
+	KEY_7 = KEY_INPUT_7,
+	KEY_8 = KEY_INPUT_8,
+	KEY_9 = KEY_INPUT_9,
 
 };
 
@@ -144,21 +144,20 @@ public:
 	bool Off(KeyCode keycode);
 };
 /*
-PAD_INPUT_DOWN　	// ↓チェックマスク(下キー or テンキーの２キー)
-PAD_INPUT_LEFT　	// ←チェックマスク(左キー or テンキーの４キー)
-PAD_INPUT_RIGHT	// →チェックマスク(右キー or テンキーの６キー)
-PAD_INPUT_UP　	// ↑チェックマスク(上キー or テンキーの８キー)
-PAD_INPUT_1　	// 1ボタンチェックマスク(Ｚキー)
-PAD_INPUT_2　	// 2ボタンチェックマスク(Ｘキー)
-PAD_INPUT_3　	// 3ボタンチェックマスク(Ｃキー)
-PAD_INPUT_4　	// 4ボタンチェックマスク(Ａキー)
-PAD_INPUT_5　	// 5ボタンチェックマスク(Ｓキー)
-PAD_INPUT_6　	// 6ボタンチェックマスク(Ｄキー)
-PAD_INPUT_7　	// 7ボタンチェックマスク(Ｑキー)
-PAD_INPUT_8　	// 8ボタンチェックマスク(Ｗキー)
-PAD_INPUT_9　	// 9ボタンチェックマスク(ＥＳＣキー)
-PAD_INPUT_10　	// 10ボタンチェックマスク(スペースキー)
 
+
+typedef struct tagDINPUT_JOYSTATE
+{
+int						X ;								// スティックのＸ軸パラメータ( -1000～1000 )		左：マイナス　右：プラス
+int						Y ;								// スティックのＹ軸パラメータ( -1000～1000 )		上：マイナス　下：プラス
+int						Z ;								// スティックのＺ軸パラメータ( -1000～1000 )		未使用
+int						Rx ;							// スティックのＸ軸回転パラメータ( -1000～1000 )	右スティックX
+int						Ry ;							// スティックのＹ軸回転パラメータ( -1000～1000 )	右スティックY
+int						Rz ;							// スティックのＺ軸回転パラメータ( -1000～1000 )	未使用
+int						Slider[ 2 ] ;					// スライダー二つ		ないよ！！！！
+unsigned int			POV[ 4 ] ;						// ハットスイッチ４つ( 0xffffffff:入力なし 0:上 4500:右上 9000:右 13500:右下 18000:下 22500:左下 27000:左 31500:左上 )　十字キー
+unsigned char			Buttons[ 32 ] ;					// ボタン３２個( 押されたボタンは 128 になる )
+} DINPUT_JOYSTATE ;
 #define PAD_INPUT_DOWN								(0x00000001)	// ↓チェックマスク
 #define PAD_INPUT_LEFT								(0x00000002)	// ←チェックマスク
 #define PAD_INPUT_RIGHT								(0x00000004)	// →チェックマスク
@@ -174,35 +173,59 @@ PAD_INPUT_10　	// 10ボタンチェックマスク(スペースキー)
 #define PAD_INPUT_START								(0x00001000)	// ＳＴＡＲＴボタンチェックマスク
 #define PAD_INPUT_M									(0x00002000)	// Ｍボタンチェックマスク
 
-
-typedef struct tagDINPUT_JOYSTATE
-{
-int						X ;								// スティックのＸ軸パラメータ( -1000～1000 )
-int						Y ;								// スティックのＹ軸パラメータ( -1000～1000 )
-int						Z ;								// スティックのＺ軸パラメータ( -1000～1000 )
-int						Rx ;							// スティックのＸ軸回転パラメータ( -1000～1000 )
-int						Ry ;							// スティックのＹ軸回転パラメータ( -1000～1000 )
-int						Rz ;							// スティックのＺ軸回転パラメータ( -1000～1000 )
-int						Slider[ 2 ] ;					// スライダー二つ
-unsigned int			POV[ 4 ] ;						// ハットスイッチ４つ( 0xffffffff:入力なし 0:上 4500:右上 9000:右 13500:右下 18000:下 22500:左下 27000:左 31500:左上 )
-unsigned char			Buttons[ 32 ] ;					// ボタン３２個( 押されたボタンは 128 になる )
-} DINPUT_JOYSTATE ;
-
 */
+
+
 //パッド入力
+enum class PadCode {
+	A,			
+	B,
+	X,			
+	Y,
+	LB,			
+	RB,
+	BACK,
+	START,
+	LSTICK,
+	RSTICK,
+};
+enum class PadAng {
+	DOWN,
+	LEFT,
+	RIGHT,
+	UP,
+};
+
 class GPad {
-	enum PadType {
-		one,
-		two,
-		three,
-		four,
+public:
+	//enum PadType {
+	//	one,
+	//	two,
+	//	three,
+	//	four,
+	//};
+	enum class Pad {
+		LEFT, RIGHT, UP, DOWN,
 	};
 	DINPUT_JOYSTATE input;		//入力情報
+	DINPUT_JOYSTATE pre;		//前フレームの入力情報
 	unsigned int padNum;		//接続されているパッドの数
 
-	GPad(int);
+	GPad(int id);
 	void update();
 	unsigned int getPadNum();
+	//bool onLeft();
+	//bool onRight();
+	//bool onUp();
+	//bool onDown();
+	bool On(PadCode input);
+	bool Down(PadCode input);
+	bool Up(PadCode input);
+	bool Off(PadCode input);
+	bool On(PadAng input);
+	bool Down(PadAng input);
+	bool Up(PadAng input);
+	bool Off(PadAng input);
 
 private:
 	unsigned int padID;

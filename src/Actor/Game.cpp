@@ -33,7 +33,10 @@ int Root::receiveMsg(std::weak_ptr<Object> sender, const std::string & msg)
 	}
 	return 0;
 }
-Game::Game() {
+Game::Game() 
+	:
+	pad(0)
+{
 	root = std::make_shared<Root>();
 	root->init(root);
 //	grafac = std::make_unique<GraphFactory>();
@@ -44,6 +47,7 @@ Game::~Game(){}
 void Game::doAll() {
 	kb.update();
 	mouse.update();
+	pad.update();
 	if (kb.Down(Q)) { debug_ = !debug_; }
 	root->updateWithChildren();
 	root->renderWithChildren();

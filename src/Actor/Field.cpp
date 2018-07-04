@@ -116,12 +116,12 @@ void Field::init()
 
 void Field::update()
 {
-	if (game->kb.Down(W)) { activeMapID_ = 0; }
-	if (game->kb.Down(A)) { activeMapID_ = 1; }
-	if (game->kb.Down(D)) { activeMapID_ = 2; }
-	if (game->kb.Down(S)) { activeMapID_ = 3; }
+	if (game->kb.Down(W) || game->pad.Down(PadCode::Y)) { activeMapID_ = 0; }
+	if (game->kb.Down(A) || game->pad.Down(PadCode::X)) { activeMapID_ = 1; }
+	if (game->kb.Down(D) || game->pad.Down(PadCode::B)) { activeMapID_ = 2; }
+	if (game->kb.Down(S) || game->pad.Down(PadCode::A)) { activeMapID_ = 3; }
 
-	if (game->kb.Down(ENTER)) {
+	if (game->kb.Down(ENTER) || game->pad.Down(PadCode::START)) {
 		BackToTitle();
 	}
 }

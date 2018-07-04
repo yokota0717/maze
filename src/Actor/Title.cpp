@@ -12,7 +12,7 @@ void Title::init()
 
 void Title::update()
 {
-	if (game->kb.Down(ENTER)) {
+	if (game->kb.Down(ENTER) || game->pad.Down(PadCode::START)) {
 		StartGame();
 	}
 }

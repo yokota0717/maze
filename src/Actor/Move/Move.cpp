@@ -6,13 +6,13 @@ Move::Move()
 bool Move::OutOfMap(KeyCode key)
 {
 	switch (key) {
-	case LEFT:
+	case KeyCode::LEFT:
 		return (blockPos.x - 1) < 0;
-	case RIGHT:
+	case KeyCode::RIGHT:
 		return (blockPos.x + 1) >= field->sizeX();
-	case UP:
+	case KeyCode::UP:
 		return (blockPos.y - 1) < 0;
-	case DOWN:
+	case KeyCode::DOWN:
 		return (blockPos.y + 1) >= field->sizeY();
 	default:
 		return true;
@@ -115,7 +115,7 @@ void InputMove::init()
 {
 	field = std::dynamic_pointer_cast<Field>(game->root->getObjectFromChildren("Field").lock());
 	blockPos = Math::Vec(0, 0);
-	pos = Math::Vec(blockPos.x * 100 + 200, blockPos.y * 100 + 100);
+	pos = Math::Vec(blockPos.x * 100 + 250, blockPos.y * 100 + 150);
 	moving = false;
 }
 

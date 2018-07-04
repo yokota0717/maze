@@ -31,6 +31,7 @@ public:
 
 	Keyboard kb;
 	Mouse mouse;
+	GPad pad;
 	std::shared_ptr<Root> root;
 	//std::unique_ptr<GraphFactory> grafac;
 	void doAll();
